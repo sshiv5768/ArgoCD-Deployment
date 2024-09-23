@@ -1,12 +1,16 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
-WORKDIR /usr/local/app
+WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install 
 
-CMD ["npm" "start"]
+COPY . . 
+
+RUN npm run build
+
+CMD ["npm", "start"]
 
 
 
